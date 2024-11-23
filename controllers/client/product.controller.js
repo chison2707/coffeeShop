@@ -1,5 +1,7 @@
 const Product = require("../../models/product.model");
 const productCategory = require("../../models/product-category.model");
+const Vote = require("../../models/vote.model");
+const User = require("../../models/user.model");
 
 const productsHelper = require("../../helpers/products");
 const productsCategoryHelper = require("../../helpers/products-category");
@@ -42,9 +44,27 @@ module.exports.detail = async (req, res) => {
 
         product.priceNew = productsHelper.priceNewProduct(product);
 
+        const vote = await Vote.find({
+            product_id: product.id
+        })
+
+        const tbStar = (vote.reduce((sum, v) => sum + v.star, 0)) / vote.length;
+
+        product.tbStar = tbStar;
+
+        for (const v of vote) {
+            const user = await User.find({
+                tokenUser: v.tokenUser
+            }).select("fullName");
+
+            v.user = user;
+        }
+
+
         res.render("client/pages/products/detail", {
             pageTitle: product.title,
-            product: product
+            product: product,
+            vote: vote
         });
     } catch (error) {
         res.redirect(`/products`);

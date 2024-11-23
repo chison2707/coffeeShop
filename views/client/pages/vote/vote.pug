@@ -1,0 +1,53 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+block main
+    +alert-error(3000)
+    +alert-success(3000)
+    form(
+            action=""
+            data-path=`/vote/${product.id}` 
+            method="POST"
+            id="form-star"
+        )
+        .order-success-container
+            h2 Đánh giá sản phẩm #{product.title}.
+            .order-item
+                img(
+                    src=product.thumbnail 
+                    alt=product.title
+                )
+            .rating-section.text-center.mb-3
+                span Đánh giá của bạn
+                .stars
+                    a.fa.fa-star(
+                        data-rating='1'
+                        star-vote
+                    )
+                    a.fa.fa-star(
+                        data-rating='2'
+                        star-vote
+                    )
+                    a.fa.fa-star(
+                        data-rating='3'
+                        star-vote
+                    )
+                    a.fa.fa-star(
+                        data-rating='4'
+                        star-vote
+                    )
+                    a.fa.fa-star(
+                        data-rating='5'
+                        star-vote
+                    )
+            .comment-section.mb-3
+                textarea(
+                    class="form-control textarea-mce" 
+                    id="desc"
+                    name="desc" 
+                    rows="5"
+                )
+            button(
+                class="back-home-button"
+                type="submit" 
+            ) Gửi đánh giá
+    script(src="/js/vote.js") 

@@ -69,7 +69,6 @@ module.exports.index = async (req, res) => {
             updatedBy.accountFullName = userUpdate.fullName;
         }
     }
-
     res.render("admin/pages/products/index", {
         pageTitle: "Danh sách sản phẩm",
         products: products,

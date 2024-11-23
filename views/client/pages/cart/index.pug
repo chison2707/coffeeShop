@@ -9,7 +9,8 @@ block main
                     img(src=item.productInfo.thumbnail alt=item.productInfo.title)
                     .cart-details
                         a(href=`/products/detail/${item.productInfo.slug}`)  #{item.productInfo.title}
-                        p Đơn giá: #{item.productInfo.priceNew}đ
+                        p Đơn giá: #{Number(item.productInfo.priceNew).toLocaleString('vi-VN')}đ
+                        p Ghi chú: #{item.comment}
                     .cart-quantity
                         input(
                             type="number" 
@@ -19,7 +20,7 @@ block main
                             product-id= item.product_id
                             style="width: 50px;"
                         )
-                    .cart-total #{item.totalPrice}đ
+                    .cart-total #{Number(item.totalPrice).toLocaleString('vi-VN')}đ
                     a(
                         href=`/cart/delete/${item.product_id}`
                         class="btn btn-danger"
@@ -27,11 +28,11 @@ block main
 
         .cart-summary
             p
-                b Tổng tiền: #{cart.totalPrice}đ
+                b Tổng tiền: #{Number(cart.totalPrice).toLocaleString('vi-VN')}đ
 
         a(
             href="/checkout"
-            class="btn btn-success"
+            class="btn btn-secondary"
         ) Tiếp tục thanh toán
 
     script(src="/js/cart.js") ;

@@ -1,0 +1,58 @@
+extends ../../layouts/default.pug
+include ../../mixins/moment.pug
+
+block main
+    h1 Quản lý chi
+    .card.mb-3
+        .card-header Danh sách
+            .row 
+                .col-12
+                    p 
+                        b 
+                            | Tổng chi: 
+                            span #{totalSpend.toLocaleString('vi-VN')}
+                            |  VND
+            .card-body
+            .row 
+                .col-8
+                    section.filter-section
+                    h5 Lọc chi
+                    form#filterForm(
+                        action='/admin/revenue/spend' 
+                        method='GET'
+                    )
+                        .form-group
+                            label(for='startDate') Từ ngày:
+                            input#startDate(type='date' name='startDate' value=startDate)
+                        .form-group
+                            label(for='endDate') Đến ngày:
+                            input#endDate(type='date' name='endDate' value=endDate)
+                        button.btn.btn-info.mb-2(type='submit') Lọc
+                .col-4(class="text-right")
+                    a(
+                        type="button" 
+                        class="btn btn-outline-success mb-1"
+                        href=(`${prefixAdmin}/revenue/spend/create`)
+                    ) + Thêm mới  
+                    button.btn.btn-secondary.ml-2(type='button' onclick="window.location='/admin/revenue/spend'") Xóa bộ lọc
+    
+                table(
+                    class=" table table-hover table-sm"
+                )
+                    thead
+                        tr
+                            th STT
+                            th Người nhập
+                            th Mô tả chi tiết
+                            th Số tiền chi
+                            th Ngày chi
+                    tbody
+                        each item,index in spend 
+                            tr 
+                                td #{index +1}
+                                each name in item.infor
+                                    td #{name.fullName}
+                                td !{item.desc}
+                                td #{item.price.toLocaleString("vi-VN")}đ
+                                td 
+                                    +formatDateTime(item.createdAt)

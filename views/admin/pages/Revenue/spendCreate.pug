@@ -1,0 +1,35 @@
+extends ../../layouts/default.pug
+
+block main
+    h1(class="mb-4") Thêm mới chi
+
+    form(
+            action=`${prefixAdmin}/revenue/spend/create` 
+            method="POST"
+        )
+            div(class="form-group")
+                label(for="desc") Mô tả chi tiết
+                textarea(
+                    class="form-control textarea-mce" 
+                    id="desc"
+                    name="desc" 
+                    rows="5"
+                )
+
+            div(
+                class="form-group"
+                )
+                label(for="price") Sô tiền chi
+                input(
+                    type="Number" 
+                    class="form-control" 
+                    id="price" 
+                    name="price"
+                    required
+                    placeholder="...VND"
+                )
+            div(class="form-group")
+                button(
+                    type="submit"
+                    class="btn btn-primary"
+                ) Tạo mới

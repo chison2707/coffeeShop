@@ -1,0 +1,16 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+block main
+    +alert-error(3000)
+    +alert-success(3000)
+    .order-success-container
+        h2 Vui lòng chọn 1 sản phẩm bạn đã đặt hàng để đánh giá!
+        each item in product
+            .order-item
+                a(href=`vote/${item.id}`) 
+                    img(
+                        src=item.thumbnail 
+                        alt=item.title
+                    )
+                    .item-details
+                    p #{item.title}

@@ -1,0 +1,51 @@
+extends ../../layouts/default.pug
+include ../../mixins/moment.pug
+
+block main
+    h1 Quản lý doanh thu
+    .card.mb-3
+        .card-header Danh sách
+            .row
+                .col-6
+                    p 
+                        b 
+                            | Tổng doanh thu:
+                            span#totalRevenue #{totalRevenue.toLocaleString('vi-VN')}
+                            |  VND
+                .col-6.text-right
+                    button.btn.btn-secondary.mb-2(type='button' onclick="window.location='/admin/revenue/collect'") Xóa bộ lọc
+        .card-body
+            .row 
+             section.filter-section
+                h5 Lọc doanh thu
+                form#filterForm(
+                    action='/admin/revenue/collect' 
+                    method='GET'
+                )
+                    .form-group
+                        label(for='startDate') Từ ngày:
+                        input#startDate(type='date' name='startDate' value=startDate)
+                    .form-group
+                        label(for='endDate') Đến ngày:
+                        input#endDate(type='date' name='endDate' value=endDate)
+                    button.btn.btn-info.mb-2(type='submit') Lọc
+            .row 
+                table(
+                        class=" table table-hover table-sm"
+                    )
+                        thead
+                            tr
+                                th STT
+                                th Mã đơn hàng
+                                th Tên người đặt
+                                th Tổng tiền
+                                th Ngày đặt
+                        tbody 
+                            each item, index in order
+                                tr
+                                    td #{index +1}
+                                    td #{item.id}
+                                    td #{item.createFullName}
+                                    td #{item.totalPrice.toLocaleString("vi-VN")}đ
+                                    td 
+                                        +formatDateTime(item.createdAt)

@@ -12,14 +12,14 @@ block main
                     img(src=item.productInfo.thumbnail alt=item.productInfo.title)
                     .cart-details
                         p #{item.productInfo.title}
-                        p Đơn giá: #{item.productInfo.priceNew}đ
+                        p Đơn giá: #{Number(item.productInfo.priceNew).toLocaleString('vi-VN')}đ
                     .cart-quantity
                          p #{item.quantity}
-                    .cart-total #{item.totalPrice}đ
+                    .cart-total #{Number(item.totalPrice).toLocaleString('vi-VN')}đ
 
         .cart-summary
             p
-                b Tổng tiền: #{cart.totalPrice}đ
+                b Tổng tiền: #{Number(cart.totalPrice).toLocaleString('vi-VN')}đ
 
         if(cart.products.length > 0)
             .order-container

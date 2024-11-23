@@ -52,7 +52,8 @@ module.exports.order = async (req, res) => {
             product_id: product.product_id,
             price: 0,
             discountPercentage: 0,
-            quantity: product.quantity
+            quantity: product.quantity,
+            comment: product.comment
         };
 
         const productInfo = await Product.findOne({

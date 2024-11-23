@@ -21,6 +21,7 @@ module.exports.index = async (req, res) => {
             product.totalPrice = product.priceNew * product.quantity;
         }
         order.totalPrice = order.products.reduce((sum, item) => sum + item.totalPrice, 0);
+
         // lấy thông tin người tạo
         const user = await User.findOne({
             tokenUser: order.user_id
@@ -74,7 +75,7 @@ module.exports.changeStatus = async (req, res) => {
     res.redirect("back");
 }
 
-// [PATCH]/admin/order/change-status/:status/:id
+// [GET]/admin/order/detail/:id
 module.exports.detail = async (req, res) => {
     try {
         const find = {

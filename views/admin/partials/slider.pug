@@ -23,7 +23,11 @@
                     a(href=`${prefixAdmin}/accounts`) Danh sách tài khoản
             if(role.permissions.includes("user_view"))
                 li 
-                        a(href=`${prefixAdmin}/user`) quản lý tài khoản khách hàng
+                    a(href=`${prefixAdmin}/user`) quản lý tài khoản khách hàng
+            li 
+                a(href=`${prefixAdmin}/vote`) quản lý đánh giá
+            li 
+                a(href=`${prefixAdmin}/revenue`) quản lý doanh thu
             if(role.permissions.includes("general"))
                 li 
                     a(href=`${prefixAdmin}/settings/general`) Cài đặt chung

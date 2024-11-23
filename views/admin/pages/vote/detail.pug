@@ -1,0 +1,19 @@
+extends ../../layouts/default.pug
+
+block main    
+    .row.mt-4
+        .col-12
+            .card.mb-4.border-0.shadow-sm
+                .card-header.bg-light.text-center3
+                    h5.text-secondary Thông tin đánh giá sản phẩm #{vote.product.title}
+                .card-body.text-center
+                    p.text-muted
+                        | Số sao: 
+                        b #{vote.star}
+                        i.fa-solid.fa-star(style="color: #FFD43B;")
+                    p.text-muted Bình luận đánh giá: <b> !{vote.desc}</b>
+                    p.text-muted Người đánh giá: <b> #{vote.user.fullName}</b>
+        a.ml-3(
+            class="btn btn-primary"
+            href=`${prefixAdmin}/vote`
+        ) Quay lại trang trước

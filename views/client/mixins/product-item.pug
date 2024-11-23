@@ -8,6 +8,6 @@ mixin product-item(item)
               h3.product-name #{item.title}
               .discount-badge #{item.discountPercentage}%
               .product-price
-                  span.original-price #{item.priceNew}₫
-                  span.discount-price #{item.price}₫
+                  span.original-price #{item.price.toLocaleString("vi-VN")}₫
+                  span.discount-price #{Number(item.priceNew).toLocaleString('vi-VN')}₫
               button.buy-button Mua ngay

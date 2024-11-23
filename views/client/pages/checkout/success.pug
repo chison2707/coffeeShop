@@ -30,15 +30,15 @@ block main
                         |  #{item.productInfo.title}
                     p
                         strong Giá:
-                        |  #{item.priceNew}đ
+                        |  #{Number(item.priceNew).toLocaleString('vi-VN')}đ
                     p
                         strong Số lượng:
                         |  #{item.quantity}
                     p
                         strong Tổng tiền:
-                        |  #{item.totalPrice}đ
+                        |  #{Number(item.totalPrice).toLocaleString('vi-VN')}đ
         .order-total
             p
                 strong Tổng tiền:
-                |  #{order.totalPrice}đ
+                |  #{Number(order.totalPrice).toLocaleString('vi-VN')}đ
         a.back-home-button(href='/') Quay lại trang chủ
