@@ -113,7 +113,7 @@ module.exports.forgotPasswordPost = async (req, res) => {
         expireAt: Date.now()
     };
 
-    const forgotPassword = new ForgorPassword(objforgotPassword);
+    const forgotPassword = new ForgotPassword(objforgotPassword);
     await forgotPassword.save();
 
     // gửi mã otp qua email của user
