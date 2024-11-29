@@ -40,6 +40,8 @@ header
               img.mt-2(src=user.avatar?user.avatar:"/images/avatarDefault.png", class="rounded-circle mb-3", style="height: 20px;") 
               span.ml-1 #{user.fullName}
           li
+            a(href='/chat') Chat
+          li
             a(href='/user/logout') Đăng xuất
         else
           li 
