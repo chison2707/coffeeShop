@@ -2,33 +2,27 @@ extends ../../layouts/default.pug
 include ../../mixins/box-head.pug
 block main
     .container.my-3
-        .col-12
-            .chat
-                //- .inner-head
-                //-     .inner-avatar EY
-                //-     .inner-name Em Yêu
-                .inner-body
-                    .inner-incoming
-                        .inner-name Em Yêu
-                        .inner-content
-                            | A oi sang nha e nha, nha e khong co ai o nha ca
-                    .inner-outgoing
-                        .inner-name Em Yêu
-                        .inner-content
-                            | The à? Ok e iu
-                    .inner-incoming
-                        .inner-name Em Yêu
-                        .inner-content
-                            | Em Yêu
-                .inner-foot
-                    form(
-                        class="inner-form"
-                        action=""
-                    )
-                        input(
-                            type="text"
-                            placeholder="Nhập nội dung..."
-                            name="content"
+        .row
+            .col-12
+                .chat.mt-5
+                    //- .inner-head 
+                    //-     .inner-avatar EY
+                    //-     .inner-name em yêu
+                    .inner-body
+                        each chat in chats 
+                            div(class = (chat.inforUser.id == user.id ? "inner-outgoing": "inner-incoming"))
+                                if(chat.inforUser.id != user.id) 
+                                    .inner-name <b>#{chat.inforUser.fullName}</b>
+                                .inner-content #{chat.content}
+                    .inner-foot
+                        form(
+                            class="inner-form"
+                            action=""
                         )
-                        button 
-                            i(class="fa-solid fa-paper-plane")
+                            input(
+                                type="text"
+                                placeholder="Nhập nội dung..."
+                                name="content"
+                            )
+                            button 
+                                i(class="fa-solid fa-paper-plane")
