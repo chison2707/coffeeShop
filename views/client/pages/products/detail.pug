@@ -32,9 +32,6 @@ block main
                     if (product.discountPercentage)
                         div(class="inner-percent") Giảm giá: <b> #{product.discountPercentage}% </b>
 
-                    if (product.stock)
-                        div(class="inner-stock") Còn lại: <span> #{product.stock}</span> sản phẩm
-
                     form(
                         action=`/cart/add/${product.id}`
                         method="POST"

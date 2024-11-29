@@ -809,3 +809,225 @@ button.back-home-button :hover {
     justify-content: center;
     margin-top: 10px;
 }
+
+/* CHAT */
+.chat {
+    width: 1000px;
+    border: 1.5px solid #ccc;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.chat .inner-name {
+    font-weight: 600px;
+    font-size: 18px;
+    margin-left: 10px;
+    margin-bottom: .3rem;
+}
+
+.chat .inner-body {
+    display: flex;
+    flex-direction: column;
+    height: 450px;
+    max-height: 450px;
+    overflow-y: auto;
+}
+
+.chat .inner-incoming .inner-content {
+    background: #ddd;
+    padding: .5rem 1rem;
+    color: #000;
+    border-radius: 15px;
+    max-width: 16rem;
+    width: fit-content;
+    margin-bottom: 1rem;
+}
+
+.chat .inner-outgoing {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: .2rem;
+}
+
+.chat .inner-outgoing .inner-content {
+    padding: .5rem 1rem;
+    background: rgb(4, 107, 138);
+    color: #fff;
+    border-radius: 15px;
+    width: fit-content;
+    max-width: 16rem;
+}
+
+.chat .inner-form {
+    display: flex;
+    align-items: center;
+}
+
+.chat .inner-form input {
+    flex: 1;
+    height: 32px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 0 10px;
+    outline: none;
+}
+
+.chat .inner-foot {
+    margin-top: 3rem;
+    position: relative;
+}
+
+.chat .inner-foot input {
+    padding: 1.25rem 1rem;
+    width: 85%;
+}
+
+.chat .inner-form .button-icon,
+.chat .inner-form .button-icon-img {
+    color: #c9aa7e;
+    border-radius: 15px;
+    height: 32px;
+    padding: 0 10px;
+    width: 4%;
+    padding: 1.25rem 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    transition: all .2s;
+}
+
+.chat .inner-form .button-icon:hover,
+.chat .inner-form .button-icon-img:hover {
+    background-color: #c9aa7e;
+}
+
+.chat .inner-form button {
+    margin-left: .25rem;
+    border-radius: 15px;
+    border: 1px solid rgb(4, 107, 138);
+    background: rgb(4, 107, 138);
+    color: #fff;
+    height: 32px;
+    padding: 0 10px;
+    width: 7%;
+    padding: 1.25rem 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat .inner-body .inner-images img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    background: #efefef;
+    padding: 10px;
+    margin: 0 5px 5px 0;
+    border-radius: 5px;
+}
+
+.chat .inner-body .inner-outgoing .inner-images {
+    margin-left: auto;
+    text-align: right;
+}
+
+.chat .inner-body .inner-outgoing .inner-images img {
+    margin: 0 0 5px 5px;
+}
+
+.chat .inner-preview-images {
+    position: relative;
+}
+
+.chat .inner-preview-images .label-container {
+    display: none;
+}
+
+.chat .inner-preview-images .input-container {
+    display: none;
+}
+
+.chat .inner-preview-images .image-preview {
+    height: auto;
+    padding: 0;
+    border-radius: 0;
+}
+
+.chat .inner-preview-images .image-preview {
+    height: auto;
+    padding: 0;
+    border-radius: 0;
+}
+
+.chat .inner-preview-images .image-preview-item {
+    width: 90px;
+    background-size: contain;
+}
+
+/* End Chat */
+/* emoij-picker */
+.tooltip {
+    visibility: hidden;
+}
+
+.tooltip.shown {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* end emoij-picker */
+
+/* box-typing */
+.box-typing {
+    position: relative;
+}
+
+.box-typing .inner-dots {
+    position: relative;
+    height: 20px;
+    width: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fefefe;
+    border-radius: 45px;
+    margin-top: 2px;
+}
+
+.box-typing .inner-dots span {
+    animation: blink 1.5s infinite;
+    height: 5px;
+    width: 5px;
+    background: #252525;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 3px;
+}
+
+.box-typing .inner-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.box-typing .inner-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0.1;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.1;
+    }
+}
+
+/* end box-typing */

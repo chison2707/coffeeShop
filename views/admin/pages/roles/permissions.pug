@@ -169,12 +169,31 @@ block main
                         each item in records
                             td(class="text-center")
                                 input(type="checkbox")
-                    //- Cài đặt
+                    //- Quản lý đánh giá
                     tr
                         td(colspan="4")
-                            b Cài đặt
-                    tr(data-name="general")
-                        td Cài đặt chung
+                            b Đánh giá khách hàng
+                    tr(data-name="vote_view")
+                        td Xem
+                        each item in records
+                            td(class="text-center")
+                                input(type="checkbox")
+                    tr(data-name="vote_delete")
+                        td Xóa
+                        each item in records
+                            td(class="text-center")
+                                input(type="checkbox")
+                    //- Quản lý doanh thu
+                    tr
+                        td(colspan="4")
+                            b Quản lý doanh thu
+                    tr(data-name="revenue_view")
+                        td Xem
+                        each item in records
+                            td(class="text-center")
+                                input(type="checkbox")
+                    tr(data-name="revenue_spend")
+                        td Quản lý chi
                         each item in records
                             td(class="text-center")
                                 input(type="checkbox")

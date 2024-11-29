@@ -1,0 +1,34 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+block main
+    .container.my-3
+        .col-12
+            .chat
+                //- .inner-head
+                //-     .inner-avatar EY
+                //-     .inner-name Em Yêu
+                .inner-body
+                    .inner-incoming
+                        .inner-name Em Yêu
+                        .inner-content
+                            | A oi sang nha e nha, nha e khong co ai o nha ca
+                    .inner-outgoing
+                        .inner-name Em Yêu
+                        .inner-content
+                            | The à? Ok e iu
+                    .inner-incoming
+                        .inner-name Em Yêu
+                        .inner-content
+                            | Em Yêu
+                .inner-foot
+                    form(
+                        class="inner-form"
+                        action=""
+                    )
+                        input(
+                            type="text"
+                            placeholder="Nhập nội dung..."
+                            name="content"
+                        )
+                        button 
+                            i(class="fa-solid fa-paper-plane")
