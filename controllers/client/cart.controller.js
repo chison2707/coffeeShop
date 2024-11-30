@@ -14,10 +14,16 @@ module.exports.addPost = async (req, res) => {
         _id: cartId
     });
 
+    const product = await Product.findOne({ _id: productId })
     const existProductInCart = cart.products.find(item => item.product_id === productId);
 
     if (existProductInCart) {
         const quantityNew = quantity + existProductInCart.quantity;
+        if (quantityNew > product.stock) {
+            req.flash("error", `Bạn không thể đặt nhiều hơn ${product.stock} sản phẩm!`);
+            res.redirect("back");
+            return;
+        }
         await Cart.updateOne({
             _id: cartId,
             "products.product_id": productId,
@@ -100,18 +106,28 @@ module.exports.delete = async (req, res) => {
 module.exports.update = async (req, res) => {
     const cartId = req.cookies.cartId;
     const productId = req.params.product_id;
-    const quantity = req.params.quantity;
+    const quantity = parseInt(req.params.quantity);
 
-    await Cart.updateOne({
-        _id: cartId,
-        "products.product_id": productId
-    }, {
-        $set: {
-            "products.$.quantity": quantity
-        }
-    })
+    const product = await Product.findOne({
+        _id: productId
+    });
 
-    req.flash("success", "Đã cập nhật số lượng!");
+    if (quantity < 1 || quantity > product.stock) {
+        req.flash("error", `Số lượng phải từ 1 đến ${product.stock} cho sản phẩm ${product.title}`);
+        res.redirect("back");
+    } else {
+        await Cart.updateOne({
+            _id: cartId,
+            "products.product_id": productId
+        }, {
+            $set: {
+                "products.$.quantity": quantity
+            }
+        })
 
-    res.redirect("back");
+        req.flash("success", "Đã cập nhật số lượng!");
+
+        res.redirect("back");
+    }
+
 }

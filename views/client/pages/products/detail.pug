@@ -1,7 +1,10 @@
 extends ../../layouts/default.pug
+include ../../mixins/alert.pug
 include ../../mixins/box-head.pug
 
 block main
+    +alert-success(3000)
+    +alert-error(3000)
     .row.ml-2.mt-2
         button(
             class="btn btn-danger"

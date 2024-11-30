@@ -12,6 +12,7 @@ module.exports.index = async (req, res) => {
                 content: content
             });
             await chat.save();
+
             // trả data về client
             _io.emit("SERVER_RETURN_MESSAGE", {
                 user_id: userId,
@@ -19,7 +20,15 @@ module.exports.index = async (req, res) => {
                 content: content
             });
         })
+        socket.on("CLIENT_SEND_TYPING", (type) => {
+            socket.broadcast.emit("SERVER_RETURN_TYPING", {
+                userId: userId,
+                fullName: fullName,
+                type: type
+            });
+        })
     });
+
     // Lấy ra data
     const chats = await Chat.find({
         deleted: false
@@ -28,8 +37,10 @@ module.exports.index = async (req, res) => {
         const inforUser = await User.findOne({
             _id: chat.user_id
         }).select("fullName");
+
         chat.inforUser = inforUser;
     }
+
     res.render("client/pages/chat/index", {
         pageTitle: "Chat",
         chats: chats

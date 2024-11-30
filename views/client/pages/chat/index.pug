@@ -14,6 +14,7 @@ block main
                                 if(chat.inforUser.id != user.id) 
                                     .inner-name <b>#{chat.inforUser.fullName}</b>
                                 .inner-content #{chat.content}
+                        div(class="inner-list-typing")
                     .inner-foot
                         form(
                             class="inner-form"
@@ -24,5 +25,9 @@ block main
                                 placeholder="Nhập nội dung..."
                                 name="content"
                             )
+                            span(class="button-icon btn btn-light mx-2")
+                                i(class="fa-solid fa-icons")
                             button 
                                 i(class="fa-solid fa-paper-plane")
+    div(class="tooltip" role="tooltip")
+        emoji-picker                                
