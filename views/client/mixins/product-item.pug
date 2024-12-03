@@ -10,4 +10,5 @@ mixin product-item(item)
               .product-price
                   span.original-price #{item.price.toLocaleString("vi-VN")}₫
                   span.discount-price #{Number(item.priceNew).toLocaleString('vi-VN')}₫
+              .sold-badge Đã bán: #{item.sold}
               button.buy-button Mua ngay
