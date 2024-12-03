@@ -68,6 +68,9 @@ module.exports.changeStatus = async (req, res) => {
         });
 
     }
+    if (global._io) {
+        global._io.emit(`order-status-updated-${id}`, { status });
+    }
 
 
     req.flash('success', 'Cập nhật trạng thái hóa đơn thành công!');

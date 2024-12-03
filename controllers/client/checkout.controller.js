@@ -82,7 +82,7 @@ module.exports.order = async (req, res) => {
         products: []
     });
 
-    res.redirect(`/checkout/success/${order.id}`);
+    res.redirect(`/checkout/payonl/${order.id}`);
 }
 
 //[GET] /checkout/success/:id
@@ -115,6 +115,40 @@ module.exports.success = async (req, res) => {
 
     res.render("client/pages/checkout/success", {
         pageTitle: "Đặt hàng thành công!!!",
+        order: order
+    });
+}
+
+//[GET] /checkout/payOnl/:id
+module.exports.payOnl = async (req, res) => {
+    const order = await Order.findOne({
+        _id: req.params.orderId
+    });
+
+    for (const product of order.products) {
+        const productInfo = await Product.findOne({
+            _id: product.product_id
+        }).select("title thumbnail");
+
+        product.productInfo = productInfo;
+
+        product.priceNew = productHelper.priceNewProduct(product);
+
+        product.totalPrice = product.priceNew * product.quantity;
+
+    }
+    order.totalPrice = order.products.reduce((sum, item) => sum + item.totalPrice, 0);
+
+    _io.on('connection', (socket) => {
+
+        socket.on('admin-update-order-status', ({ id, status }) => {
+
+            _io.emit(`order-status-updated-${id}`, { status });
+        });
+    });
+
+    res.render("client/pages/checkout/payOnl", {
+        pageTitle: "Thanh toán online",
         order: order
     });
 }

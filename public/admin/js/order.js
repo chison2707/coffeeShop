@@ -12,6 +12,7 @@ if (selectChangeStatus.length > 0) {
             formChangeStatus.action = action;
 
             formChangeStatus.submit();
+            socket.emit('admin-update-order-status', { id, status: statusChange });
         });
     });
 }

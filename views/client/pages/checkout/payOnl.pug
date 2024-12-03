@@ -1,0 +1,19 @@
+extends ../../layouts/default.pug
+
+block main 
+    .order-success-container
+        h2 Thanh toán online!
+        p Vui lòng quét mã để thanh toán
+        .personal-info
+            img(
+                src="/images/qr.jpg"
+                alt="Mã qr"
+                style="width: 500px; height: 500px;  object-fit: contain;"
+            )
+        .order-total
+            p
+                strong Tổng tiền bạn cần thanh toán:
+                |  #{Number(order.totalPrice).toLocaleString('vi-VN')}đ
+        a.back-home-button(href='/checkout') Quay lại trang trước
+block script 
+    script(type="module", src="/js/payOnl.js") 
