@@ -101,6 +101,15 @@ module.exports.success = async (req, res) => {
         product.priceNew = productHelper.priceNewProduct(product);
 
         product.totalPrice = product.priceNew * product.quantity;
+
+        await Product.updateOne(
+            { _id: product.product_id },
+            {
+                $inc: {
+                    sold: product.quantity,
+                    stock: -product.quantity
+                }
+            });
     }
     order.totalPrice = order.products.reduce((sum, item) => sum + item.totalPrice, 0);
 
