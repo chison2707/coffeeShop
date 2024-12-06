@@ -12,6 +12,11 @@ body {
 }
 
 /* Header */
+.pic {
+    width: 100vw;
+    height: 60vh;
+}
+
 header {
     background: linear-gradient(135deg, #d4b89b, #4b2e2d);
     color: #f1f1f1;
