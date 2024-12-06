@@ -1038,3 +1038,96 @@ button.back-home-button :hover {
 }
 
 /* end box-typing */
+
+/* Box User */
+.box-user {
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.box-user .inner-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #f2f2f2;
+    margin-right: 10px;
+}
+
+.box-user .inner-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.box-user .inner-infor {
+    flex: 1;
+}
+
+.box-user .inner-name {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.box-user [btn-cancel-friend] {
+    display: none;
+}
+
+.box-user.add [btn-cancel-friend] {
+    display: inline-block;
+}
+
+.box-user.add [btn-add-friend] {
+    display: none;
+}
+
+.box-user [btn-deleted-friend] {
+    display: none;
+}
+
+.box-user.refuse [btn-deleted-friend] {
+    display: inline-block;
+}
+
+.box-user.refuse [btn-refuse-friend] {
+    display: none;
+}
+
+.box-user.refuse [btn-accept-friend] {
+    display: none;
+}
+
+.box-user [btn-accepted-friend] {
+    display: none;
+}
+
+.box-user.accepted [btn-accepted-friend] {
+    display: inline-block;
+}
+
+.box-user.accepted [btn-refuse-friend] {
+    display: none;
+}
+
+.box-user.accepted [btn-accept-friend] {
+    display: none;
+}
+
+.box-user .inner-status {
+    font-size: 12px;
+    color: #00d800;
+    opacity: 0;
+}
+
+.box-user .inner-status[status="online"] {
+    opacity: 1;
+}
+
+/* End Box User */

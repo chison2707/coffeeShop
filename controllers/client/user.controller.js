@@ -69,6 +69,16 @@ module.exports.loginPost = async (req, res) => {
 
     res.cookie("tokenUser", user.tokenUser);
 
+    await User.updateOne({
+        _id: user.id
+    }, {
+        statusOnline: "online"
+    });
+
+    _io.once('connection', (socket) => {
+        socket.broadcast.emit("SERVER_RETURN_USER_ONLINE", user.id)
+    });
+
     // lưu user_id vào collection carts
     await Cart.updateOne({
         _id: req.cookies.cartId
@@ -81,6 +91,14 @@ module.exports.loginPost = async (req, res) => {
 
 // [GET]/user/logout
 module.exports.logout = async (req, res) => {
+    await User.updateOne({
+        _id: res.locals.user.id
+    }, {
+        statusOnline: "offline"
+    });
+    _io.once('connection', (socket) => {
+        socket.broadcast.emit("SERVER_RETURN_USER_OFFLINE", res.locals.user.id);
+    });
     res.clearCookie("tokenUser");
     res.redirect(`/`);
 }
@@ -113,7 +131,7 @@ module.exports.forgotPasswordPost = async (req, res) => {
         expireAt: Date.now()
     };
 
-    const forgotPassword = new ForgotPassword(objforgotPassword);
+    const forgotPassword = new ForgorPassword(objforgotPassword);
     await forgotPassword.save();
 
     // gửi mã otp qua email của user

@@ -33,7 +33,7 @@ block main
                         div(class="inner-price-old") <b> #{product.price.toLocaleString("vi-VN")}đ</b>
 
                     if (product.discountPercentage)
-                        div(class="inner-percent") Giảm giá: <b> #{product.discountPercentage}% </b>
+                        div(class="inner-percent") Giảm giá: <b> -#{product.discountPercentage}% </b>
 
                     form(
                         action=`/cart/add/${product.id}`

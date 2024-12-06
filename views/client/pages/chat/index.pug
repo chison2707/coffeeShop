@@ -1,20 +1,30 @@
 extends ../../layouts/default.pug
 include ../../mixins/box-head.pug
 block main
+    .container.my-2
+        include ../../partials/list-btn-user.pug
     .container.my-3
         .row
-            .col-12
-                .chat.mt-5(my-id=user.id)
+            .col-12.mt-5
+                div(class="chat" my-id = user.id)
                     //- .inner-head 
                     //-     .inner-avatar EY
                     //-     .inner-name em yêu
                     .inner-body
                         each chat in chats 
-                            div(class = (chat.inforUser.id == user.id ? "inner-outgoing": "inner-incoming"))
+                            div(class = (chat.inforUser.id == user.id ? ("inner-outgoing"): ("inner-incoming")))
                                 if(chat.inforUser.id != user.id) 
                                     .inner-name <b>#{chat.inforUser.fullName}</b>
-                                .inner-content #{chat.content}
+                                if(chat.content)
+                                    .inner-content #{chat.content}
+                                if(chat.images.length > 0)
+                                    .inner-images 
+                                        each image in chat.images
+                                            img(src=image)
                         div(class="inner-list-typing")
+
+                    .inner-preview-images 
+                        div(class="custom-file-container" data-upload-id="upload-img")
                     .inner-foot
                         form(
                             class="inner-form"
@@ -25,9 +35,16 @@ block main
                                 placeholder="Nhập nội dung..."
                                 name="content"
                             )
+                            label(
+                                for="file-upload-with-preview-upload-img" 
+                                class="btn btn-light mx-2 mb-0"
+                            ) 
+                                <i class="fa-solid fa-image"></i>
                             span(class="button-icon btn btn-light mx-2")
                                 i(class="fa-solid fa-icons")
                             button 
                                 i(class="fa-solid fa-paper-plane")
     div(class="tooltip" role="tooltip")
-        emoji-picker                                
+        emoji-picker
+block script 
+    script(type="module", src="/js/chat.js") 
