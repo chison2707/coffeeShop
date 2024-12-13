@@ -12,9 +12,14 @@ module.exports.notFriend = async (req, res) => {
     const myUser = await User.findOne({ _id: userId });
     const requestFriends = myUser.requestFriends;
     const acceptFriends = myUser.acceptFriends;
+    const listFriends = myUser.friendList;
+    for (const listFriend of listFriends) {
+        listFriends.user_id = listFriend.user_id;
+    }
     const users = await User.find({
         $and: [
             { _id: { $ne: userId } },
+            { _id: { $ne: listFriends.user_id } },
             { _id: { $nin: requestFriends } },
             { _id: { $nin: acceptFriends } }
         ],
