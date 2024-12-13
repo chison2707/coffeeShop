@@ -2,7 +2,11 @@ extends ../../layouts/default.pug
 include ../../mixins/box-head.pug
 include ../../mixins/product-layout.pug
 include ../../mixins/slide.pug
+include ../../mixins/alert.pug
+
 block main
+  +alert-success(3000)
+  +alert-error(3000)
   +slide
   .container.my-3
     .row
