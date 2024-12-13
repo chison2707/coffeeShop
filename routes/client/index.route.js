@@ -24,7 +24,7 @@ module.exports = (app) => {
 
     app.use('/products', productRoute);
     app.use('/search', searchRoute);
-    app.use('/cart', cartRoute);
+    app.use('/cart', authMiddleware.requireAuth, cartRoute);
     app.use('/checkout', checkoutRoute);
     app.use('/user', userRoute);
     app.use('/chat', authMiddleware.requireAuth, chatRoute);
