@@ -5,7 +5,7 @@ block main
         .col-12
             .card.mb-4.border-0.shadow-sm
                 .card-header.bg-light.text-center
-                    h5.text-secondary Thông tin tài khoản
+                    h5.text-info Thông tin tài khoản
                 .card-body.text-center
                     if user.avatar
                         img(src=user.avatar, class="rounded-circle mb-3", style="height: 100px;")
@@ -20,7 +20,7 @@ block main
         
         .col-lg-6.col-md-6.mb-4
             .card.border-0.shadow-sm
-                .card-header.bg-light.text-secondary
+                .card-header.bg-light.text-info
                     h5.m-0 Danh mục sản phẩm
                 .card-body
                     p.text-muted Số lượng: <b> #{statistic.categoryProduct.total}</b>
@@ -29,7 +29,7 @@ block main
 
         .col-lg-6.col-md-6.mb-4
             .card.border-0.shadow-sm
-                .card-header.bg-light.text-secondary
+                .card-header.bg-light.text-info
                     h5.m-0 Sản phẩm
                 .card-body
                     p.text-muted Số lượng: <b> #{statistic.product.total}</b>
@@ -38,7 +38,7 @@ block main
 
         .col-lg-6.col-md-6.mb-4
             .card.border-0.shadow-sm
-                .card-header.bg-light.text-secondary
+                .card-header.bg-light.text-info
                     h5.m-0 Tài khoản admin
                 .card-body
                     p.text-muted Số lượng: <b> #{statistic.account.total}</b>
@@ -47,7 +47,7 @@ block main
 
         .col-lg-6.col-md-6.mb-4
             .card.border-0.shadow-sm
-                .card-header.bg-light.text-secondary
+                .card-header.bg-light.text-info
                     h5.m-0 Tài khoản client
                 .card-body
                     p.text-muted Số lượng: <b> #{statistic.user.total}</b>
