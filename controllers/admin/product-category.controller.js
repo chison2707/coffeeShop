@@ -37,7 +37,7 @@ module.exports.create = async (req, res) => {
 
 // [POST] /admin/product-category/create
 module.exports.createPost = async (req, res) => {
-    const permissions = res.locals.permissions;
+    const permissions = res.locals.role.permissions;
 
     if (!permissions.includes("products-category_create")) {
         res.status(403).send("Bạn không có quyền thêm mới danh mục sản phẩm");
